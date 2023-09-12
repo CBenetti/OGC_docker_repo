@@ -3,14 +3,14 @@
  * ### Description
 
 This repository contains informations on how to generate and use the working environment used by researchers at Candiolo research institute-IRCCS Oncogenomic laboratory. 
-Docker images are stored and can be downoaded from [cisella dockerhub repository]("https://hub.docker.com/r/cisella/bookworm_r")
+Docker images are stored and can be downoaded from [cisella DockerHub repository](https://hub.docker.com/r/cisella/bookworm_r)
 
 
-1. #### Generating the docker image
+*  #### Generating the docker image
 
 The Dockerfile in this folder has been used to generate a parent environment. For each new project, a new branch has been created with additional packages and libraries according to the 
 requirements of the various research queries. More detailed information on project environments can be found in the corresponding submissions and are available to download from the 
-[DockerHub repository]("https://hub.docker.com/r/cisella/bookworm_r").
+[DockerHub repository](https://hub.docker.com/r/cisella/bookworm_r).
 
 This repository can be downloaded and used to build the docker de-novo, as it contains the Dockerfile.
 To do so, first pull the repository 
@@ -26,7 +26,7 @@ Then, from outside of the folder, execute the following line to build the docker
 docker build OGC_docker_repo  -t ogclab:4.2.2 
 ```
 
-At the time of the build, the versions of the R packages specified in the dockerfile are those listed in the [package version table] in the current repository.
+At the time of the build, the versions of the R packages specified in the dockerfile are those listed in the [package version table](installed_packages.txt) in the current repository.
 To achieve a full reproducibility without pulling the docker image, it would be advisable to check the package versions after the build before performing any analysis. 
 
 
@@ -54,7 +54,7 @@ It will display a link to paste into a web browser to show the plot.
 In the same R session, to retrieve it just type
 
 
-```bash
+```R
 httpgd::hgd_url(host = "localhost")
 ```
 
@@ -62,7 +62,7 @@ httpgd::hgd_url(host = "localhost")
 
 By exposing several different ports, plots can be visualized in the same manner even by opening a differen terminal from inside of the same container.
 
-To open another terminal window operating in the same docker container which is already running, first retrieve the container name
+To open another terminal window operating in the same docker container which is already running, first retrieve the container id
 
 ```bash
 docker ps
@@ -71,7 +71,7 @@ docker ps
 Then use it  to initialize a new instance of the same container as follows
 
 ```bash
-docker exec -it container_name bash
+docker exec -it containerid bash
 ```
 
 In this new instance, images must be visualised in an unoccupied port of those which were made available in the creation of the container.
@@ -82,5 +82,7 @@ Hence, repeat the same passages in R using different port among the ones made av
 * ### Credits
 
 [Claudio Isella](mailto:c.isella@ircc.it)
+
+
 [Cinzia Benetti](mailto:cinzia.benetti@edu.unito.it)
 
